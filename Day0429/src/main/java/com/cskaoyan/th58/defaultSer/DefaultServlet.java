@@ -41,3 +41,30 @@ public class DefaultServlet extends HttpServlet {
     }
 
 }
+
+//another solution to set the default servlet
+@WebServlet("/")
+public class DefaultServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //first need to find which source is the customer need
+        String servletPath =  req.getServletPath();
+        //get the source's disk path through servletPath
+        String path = getServletContext().getRealPath(servletPath);
+        File file = new File(path);
+        if(file.exits() && file.isFile()){
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ServletOutputStream outputStream = resp.getOutputStream();
+            int length = 0;
+            byte[] bytes = new byte[1024];
+            while((length=fileInputStream.read(bytes))!=-1){
+                outputStream.write(bytes,0,length);
+            }
+            fileInputStream.close();
+            outputStream.close();
+        }
+        //this time is cant find the file 
+        resp.setStatus(404);
+        resp.getWriterrite().println("cant't find source");
+}
