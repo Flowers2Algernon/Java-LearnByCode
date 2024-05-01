@@ -23,7 +23,7 @@ public class DiskFilePath extends HttpServlet {
         String contentType = part.getContentType();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         Date date = new Date();
-        String dateNow = simpleDateFormat.format(date);
+        String dateNow = simpleDateFormat.format(date);//用时间作为文件目录的一部分
         String[] split = dateNow.split("-");
         String basePath = "image";
         String diskPath = "C:\\Users\\Jinhong\\Documents\\ESLPOD 6+3本教材\\1、Introduction to the United States\\PDFs";
