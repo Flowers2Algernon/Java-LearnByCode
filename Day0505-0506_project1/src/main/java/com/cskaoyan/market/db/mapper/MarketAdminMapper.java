@@ -3,6 +3,8 @@ package com.cskaoyan.market.db.mapper;
 import com.cskaoyan.market.db.domain.MarketAdmin;
 import com.cskaoyan.market.db.domain.MarketAdminExample;
 import java.util.List;
+
+import com.cskaoyan.market.db.domain.MarketAdminListVo;
 import org.apache.ibatis.annotations.Param;
 
 public interface MarketAdminMapper {

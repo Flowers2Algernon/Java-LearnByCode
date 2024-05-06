@@ -2586,8 +2586,8 @@ public class MarketUserExample {
         }
 
         public Criteria addIdLike(String s) {
-            Integer i = Integer.valueOf(s);
-            addCriterion("id like",i,"id");
+//            Integer i = Integer.valueOf(s);
+            addCriterion("id like",s,"id");
             return (Criteria) this;
         }
 
