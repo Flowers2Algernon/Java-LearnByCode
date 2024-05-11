@@ -11,4 +11,10 @@ public interface AdminOrderService {
     List<MarketOrder> list(Integer page, Integer limit, String orderStatus, String sort, String order, LocalDateTime start, LocalDateTime end, String orderSn, Integer orderId, Integer userId);
 
     HashMap<String, Object> details(Integer id);
+
+    void refund(Integer orderId, Integer refundMoney);
+
+    void delete(Integer orderId);
+
+    void ship(Integer orderId, String shipChannel, String shipSn);
 }

@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -70,5 +71,44 @@ public class AdminOrderServiceImpl implements AdminOrderService {
         map.put("orderGoods",marketOrderGoods);
         map.put("user",marketOrderDetailsUser);
         return map;
+    }
+
+    @Override
+    public void refund(Integer orderId, Integer refundMoney) {
+        SqlSession session = MybatisUtil.getSession();
+        MarketOrderMapper mapper = session.getMapper(MarketOrderMapper.class);
+        MarketOrderExample marketOrderExample = new MarketOrderExample();
+        MarketOrderExample.Criteria criteria = marketOrderExample.createCriteria();
+        if (orderId != null) {
+            criteria.andIdEqualTo(orderId);
+        }
+        MarketOrder marketOrder = mapper.selectByPrimaryKey(orderId);
+        marketOrder.setOrderStatus((short) 203);
+        marketOrder.setRefundAmount(BigDecimal.valueOf(refundMoney));
+        marketOrder.setRefundTime(LocalDateTime.now());
+        mapper.updateByPrimaryKey(marketOrder);
+        session.commit();
+        session.close();
+    }
+
+    @Override
+    public void delete(Integer orderId) {
+        SqlSession session = MybatisUtil.getSession();
+        MarketOrderMapper mapper = session.getMapper(MarketOrderMapper.class);
+        mapper.deleteByPrimaryKey(orderId);
+        session.commit();
+        session.close();
+    }
+
+    @Override
+    public void ship(Integer orderId, String shipChannel, String shipSn) {
+        SqlSession session = MybatisUtil.getSession();
+        MarketOrderMapper mapper = session.getMapper(MarketOrderMapper.class);
+        MarketOrder marketOrder = mapper.selectByPrimaryKey(orderId);
+        marketOrder.setShipChannel(shipChannel);
+        marketOrder.setShipSn(shipSn);
+        mapper.updateByPrimaryKey(marketOrder);
+        session.commit();
+        session.close();
     }
 }

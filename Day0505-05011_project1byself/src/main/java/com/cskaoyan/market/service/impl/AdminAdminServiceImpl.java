@@ -82,6 +82,5 @@ public class AdminAdminServiceImpl implements AdminAdminService {
         mapper.deleteByPrimaryKey(id);
         session.commit();
         session.close();
-
     }
 }

@@ -5,6 +5,7 @@ import com.cskaoyan.market.service.AdminOrderService;
 import com.cskaoyan.market.service.AdminOrderServiceImpl;
 import com.cskaoyan.market.util.JacksonUtil;
 import com.cskaoyan.market.util.ResponseUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
@@ -79,5 +80,66 @@ public class AdminOrderController extends HttpServlet {
       List<MarketOrder> list = adminOrderService.list(page,limit,orderStatus,sort,order,start,end,orderSn,orderId,userId);
         Object o = ResponseUtil.okList(list);
         resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(o));
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String requestURI = req.getRequestURI();
+        String replace = requestURI.replace(req.getContextPath() + "/admin/order/","");
+        if ("refund".equals(replace)){
+            refund(req,resp);
+        }else if ("delete".equals(replace)){
+            delete(req,resp);
+        } else if ("ship".equals(replace)) {
+            ship(req,resp);
+        }
+    }
+
+    private void ship(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String requestBody = req.getReader().readLine();
+        String orderIdParam = JacksonUtil.parseString(requestBody, "orderId");
+        String shipChannel = JacksonUtil.parseString(requestBody, "shipChannel");
+        String shipSn = JacksonUtil.parseString(requestBody, "shipSn");
+        Integer orderId = null;
+        try {
+            orderId = Integer.valueOf(orderIdParam);
+        }catch (Exception e){
+            resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(ResponseUtil.badArgument()));
+            return;
+        }
+        adminOrderService.ship(orderId,shipChannel,shipSn);
+        resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(ResponseUtil.ok()));
+    }
+
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String requestBody = req.getReader().readLine();
+        String orderIdParam = JacksonUtil.parseString(requestBody, "orderId");
+        Integer orderId = null;
+        try {
+            orderId = Integer.valueOf(orderIdParam);
+        }catch (Exception e){
+            resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(ResponseUtil.fail(623,"订单不能删除")));
+            return;
+        }
+        adminOrderService.delete(orderId);
+        resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(ResponseUtil.ok()));
+    }
+
+    private void refund(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        //此时不是key=value类型
+        String requestBody = req.getReader().readLine();
+        String orderIdParam = JacksonUtil.parseString(requestBody, "orderId");
+        String refundMoneyParam = JacksonUtil.parseString(requestBody, "refundMoney");
+        Integer orderId = null;
+        Integer refundMoney = null;
+        try {
+            orderId = Integer.valueOf(orderIdParam);
+            refundMoney = Integer.valueOf(refundMoneyParam);
+        }catch (Exception e){
+            resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(ResponseUtil.badArgument()));
+            return;
+        }
+        adminOrderService.refund(orderId,refundMoney);
+        resp.getWriter().println(JacksonUtil.getObjectMapper().writeValueAsString(ResponseUtil.ok()));
     }
 }
