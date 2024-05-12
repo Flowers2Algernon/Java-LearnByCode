@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--放入spring容器中的对象称之为bean；id是指的是放入容器中的对象的编号；class是其全限定类名-->
+<!--    <bean id="userService" class="com.cskaoyan.th58.service.UserServiceImpl">-->
+<!--        <property name="userMapper" ref="userMapper1"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="userMapper1" class="com.cskaoyan.th58.mapper.UserMapperImpl"/>-->
+<!--    <bean id="userfb" class="com.cskaoyan.th58.factoryBean.UserFactoryBean"/>-->
+</beans>
