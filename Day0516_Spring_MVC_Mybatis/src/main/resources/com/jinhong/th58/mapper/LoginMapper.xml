@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace: 命名空间，整个项目中必须唯一，暂时可以任意取名(后面再进行标准化) -->
+<mapper namespace="com.jinhong.th58.mapper.LoginMapper">
+
+    <select id="login" resultType="com.jinhong.th58.dao.User">
+        select * from user2 where username = ${username}
+    </select>
+</mapper>
