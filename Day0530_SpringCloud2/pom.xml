@@ -11,6 +11,11 @@
     <modules>
         <module>user-order</module>
         <module>user-service</module>
+        <module>user-api</module>
+        <module>cart-service</module>
+        <module>shop-service</module>
+        <module>cartInfo-api</module>
+        <module>productInfo-api</module>
     </modules>
 
     <properties>

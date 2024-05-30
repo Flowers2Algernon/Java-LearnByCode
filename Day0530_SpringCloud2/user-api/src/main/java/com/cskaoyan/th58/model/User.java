@@ -1,4 +1,4 @@
-package com.cskaoyan.user.model;
+package com.cskaoyan.th58.model;
 
 
 import lombok.Data;

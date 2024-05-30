@@ -1,4 +1,4 @@
-package com.cskaoyan.order;
+package com.cskaoyan.th58;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -7,11 +7,11 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@MapperScan("com.cskaoyan.order.mapper")
+@MapperScan("com.cskaoyan.th58.mapper")
 @EnableDiscoveryClient
 @EnableFeignClients
-public class OrderApplication {
+public class ShopApplication {
     public static void main(String[] args) {
-        SpringApplication.run(OrderApplication.class,args);
+        SpringApplication.run(ShopApplication.class,args);
     }
 }

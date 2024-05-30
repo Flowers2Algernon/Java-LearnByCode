@@ -9,13 +9,15 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>user-service</artifactId>
+    <artifactId>cart-service</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+
 
     <dependencies>
         <dependency>
@@ -43,18 +45,33 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
+        <!--Eureka Client依赖-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+        <!--        </dependency>-->
+        <!--负载均衡依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        <!--openFeign依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.cskaoyan.th58</groupId>
-            <artifactId>user-api</artifactId>
+            <artifactId>cartInfo-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
-        <!--Eureka Client依赖-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.cskaoyan.th58</groupId>
+            <artifactId>productInfo-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

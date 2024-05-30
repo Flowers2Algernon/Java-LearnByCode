@@ -1,0 +1,20 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: shop-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/user?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+          # nacos server地址
+        server-addr: localhost:8848
+mybatis:
+  type-aliases-package: com.cskaoyan.user.model
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
