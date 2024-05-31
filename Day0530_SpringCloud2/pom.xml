@@ -16,6 +16,8 @@
         <module>shop-service</module>
         <module>cartInfo-api</module>
         <module>productInfo-api</module>
+        <module>config-provider</module>
+        <module>config-service</module>
     </modules>
 
     <properties>

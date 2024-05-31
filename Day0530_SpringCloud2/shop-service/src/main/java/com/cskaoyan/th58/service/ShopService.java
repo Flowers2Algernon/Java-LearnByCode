@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 public class ShopService {
     @Autowired
     ShopMapper shopMapper;
-    public String queryById(Long id){
+    public ProductInfo queryById(Long id){
         ProductInfo productInfo = shopMapper.findById(id);
-        return productInfo.getSkuName();
+        return productInfo;
     }
 }

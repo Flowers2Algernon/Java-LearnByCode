@@ -16,4 +16,6 @@ public class ProductInfo {
     private String skuName;
     // 价格
     private BigDecimal price;
+    //url
+    private String img;
 }
