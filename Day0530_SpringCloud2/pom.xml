@@ -19,6 +19,10 @@
         <module>config-provider</module>
         <module>config-service</module>
         <module>mapstruct-practice</module>
+        <module>mybatis-plus-practice</module>
+        <module>MovieInfoService</module>
+        <module>MovieRatingService</module>
+        <module>MovieGateway</module>
     </modules>
 
     <properties>
@@ -32,6 +36,7 @@
         <mybatis.version>2.3.1</mybatis.version>
         <lombok.version>1.18.24</lombok.version>
         <mapstuct.version>1.5.5.Final</mapstuct.version>
+        <mybatis-plus.version>3.5.3.1</mybatis-plus.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -67,6 +72,12 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
             <!-- mysql驱动 -->
