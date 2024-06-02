@@ -1,0 +1,13 @@
+package com.cskaoyan.th58;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@MapperScan("com.cskaoyan.th58.mapper")
+public class MybatisPlusApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MybatisPlusApplication.class);
+    }
+}
