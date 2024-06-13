@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: elastic-search
+  datasource:
+    url: jdbc:mysql://localhost:3306/user?characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false&useOldAliasMetadataBehavior=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+elasticsearch:
+  host: 192.168.192.129
+  port: 9200
