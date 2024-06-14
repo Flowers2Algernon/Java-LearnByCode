@@ -1,7 +1,12 @@
 package com.cskaoyan.th58.es;
 
 import com.alibaba.fastjson.JSON;
+import com.cskaoyan.th58.es.dao.Item;
+import com.cskaoyan.th58.es.dao.ItemMapper;
 import com.cskaoyan.th58.es.dao.Person;
+import lombok.val;
+import org.elasticsearch.action.bulk.BulkRequest;
+import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.update.UpdateRequest;
@@ -18,6 +23,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @SpringBootTest
@@ -104,5 +110,29 @@ public class DocumentTest {
         //发起请求
         UpdateResponse update = client.update(updateRequest, RequestOptions.DEFAULT);
         System.out.println(update.status());
+    }
+
+    @Autowired
+    ItemMapper itemMapper;
+    //将数据从数据库中导入Es中
+    @Test
+    public void importFromDatabases() throws IOException {
+        BulkRequest bulkRequest = new BulkRequest();
+
+        //1. 获取数据库中的数据
+        List<Item> items = itemMapper.selectList(null);
+        //2. 遍历数据库中的数据
+        for (Item item : items) {
+            //将item对象转换为字符串
+            String jsonString = JSON.toJSONString(item);
+            IndexRequest indexRequest = new IndexRequest("product")
+                    .id(item.getId().toString()).source(jsonString,XContentType.JSON);
+
+            //将操作添加到批量操作中
+            bulkRequest.add(indexRequest);
+        }
+        //3. 发起批量操作请求
+        BulkResponse bulk = client.bulk(bulkRequest, RequestOptions.DEFAULT);
+        System.out.println(bulk.hasFailures());
     }
 }
