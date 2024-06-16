@@ -1,17 +1,13 @@
-package com.cskaoyan.th58;
-
-/**
- Copyright (c) 2011 IETF Trust and the persons identified as
- authors of the code. All rights reserved.
-
- Redistribution and use in source and binary forms, with or without
- modification, is permitted pursuant to, and subject to the license
- terms contained in, the Simplified BSD License set forth in Section
- 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents
- (http://trustee.ietf.org/license-info).
+package com.cskaoyan.th58; /**
+ * Copyright (c) 2011 IETF Trust and the persons identified as
+ * authors of the code. All rights reserved.
+ * <p>
+ * Redistribution and use in source and binary forms, with or without
+ * modification, is permitted pursuant to, and subject to the license
+ * terms contained in, the Simplified BSD License set forth in Section
+ * 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents
+ * (http://trustee.ietf.org/license-info).
  */
-
-// the code is copy from https://tools.ietf.org/html/rfc6238
 
 import java.lang.reflect.UndeclaredThrowableException;
 import java.security.GeneralSecurityException;
@@ -34,7 +30,8 @@ import java.util.TimeZone;
 
 public class TOTP {
 
-    private TOTP() {}
+    private TOTP() {
+    }
 
     /**
      * This method uses the JCE to provide the crypto algorithm.
@@ -46,9 +43,8 @@ public class TOTP {
      * @param keyBytes: the bytes to use for the HMAC key
      * @param text: the message or text to be authenticated
      */
-
     private static byte[] hmac_sha(String crypto, byte[] keyBytes,
-                                   byte[] text){
+                                   byte[] text) {
         try {
             Mac hmac;
             hmac = Mac.getInstance(crypto);
@@ -70,21 +66,21 @@ public class TOTP {
      * @return: a byte array
      */
 
-    private static byte[] hexStr2Bytes(String hex){
+    private static byte[] hexStr2Bytes(String hex) {
         // Adding one byte to get the right conversion
         // Values starting with "0" can be converted
-        byte[] bArray = new BigInteger("10" + hex,16).toByteArray();
+        byte[] bArray = new BigInteger("10" + hex, 16).toByteArray();
 
         // Copy all the REAL bytes, not the "first"
         byte[] ret = new byte[bArray.length - 1];
         for (int i = 0; i < ret.length; i++)
-            ret[i] = bArray[i+1];
+            ret[i] = bArray[i + 1];
         return ret;
     }
 
     private static final int[] DIGITS_POWER
             // 0 1  2   3    4     5      6       7        8
-            = {1,10,100,1000,10000,100000,1000000,10000000,100000000 };
+            = {1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000};
 
     /**
      * This method generates a TOTP value for the given
@@ -95,12 +91,11 @@ public class TOTP {
      * @param returnDigits: number of digits to return
      *
      * @return: a numeric String in base 10 that includes
-     *              {@link truncationDigits} digits
      */
 
     public static String generateTOTP(String key,
                                       String time,
-                                      String returnDigits){
+                                      String returnDigits) {
         return generateTOTP(key, time, returnDigits, "HmacSHA1");
     }
 
@@ -114,15 +109,13 @@ public class TOTP {
      * @param returnDigits: number of digits to return
      *
      * @return: a numeric String in base 10 that includes
-     *              {@link truncationDigits} digits
      */
 
     public static String generateTOTP256(String key,
                                          String time,
-                                         String returnDigits){
+                                         String returnDigits) {
         return generateTOTP(key, time, returnDigits, "HmacSHA256");
     }
-
 
     /**
      * This method generates a TOTP value for the given
@@ -133,12 +126,11 @@ public class TOTP {
      * @param returnDigits: number of digits to return
      *
      * @return: a numeric String in base 10 that includes
-     *              {@link truncationDigits} digits
      */
 
     public static String generateTOTP512(String key,
                                          String time,
-                                         String returnDigits){
+                                         String returnDigits) {
         return generateTOTP(key, time, returnDigits, "HmacSHA512");
     }
 
@@ -153,20 +145,19 @@ public class TOTP {
      * @param crypto: the crypto function to use
      *
      * @return: a numeric String in base 10 that includes
-     *              {@link truncationDigits} digits
      */
 
     public static String generateTOTP(String key,
                                       String time,
                                       String returnDigits,
-                                      String crypto){
+                                      String crypto) {
         int codeDigits = Integer.decode(returnDigits).intValue();
         String result = null;
 
         // Using the counter
         // First 8 bytes are for the movingFactor
         // Compliant with base RFC 4226 (HOTP)
-        while (time.length() < 16 )
+        while (time.length() < 16)
             time = "0" + time;
 
         // Get the HEX in a Byte[]
@@ -211,25 +202,23 @@ public class TOTP {
         String steps = "0";
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
-
-
         try {
             System.out.println(
                     "+---------------+-----------------------+" +
-                    "------------------+--------+--------+");
+                            "------------------+--------+--------+");
             System.out.println(
                     "|  Time(sec)    |   Time (UTC format)   " +
-                    "| Value of T(Hex)  |  TOTP  | Mode   |");
+                            "| Value of T(Hex)  |  TOTP  | Mode   |");
             System.out.println(
                     "+---------------+-----------------------+" +
                             "------------------+--------+--------+");
 
-            for (int i=0; i<testTime.length; i++) {
-                long T = (testTime[i] - T0)/X;
+            for (int i = 0; i < testTime.length; i++) {
+                long T = (testTime[i] - T0) / X;
                 steps = Long.toHexString(T).toUpperCase();
                 while (steps.length() < 16) steps = "0" + steps;
                 String fmtTime = String.format("%1$-11s", testTime[i]);
-                String utcTime = df.format(new Date(testTime[i]*1000));
+                String utcTime = df.format(new Date(testTime[i] * 1000));
                 System.out.print("|  " + fmtTime + "  |  " + utcTime +
                         "  | " + steps + " |");
                 System.out.println(generateTOTP(seed, steps, "8",
@@ -247,7 +236,7 @@ public class TOTP {
                         "+---------------+-----------------------+" +
                                 "------------------+--------+--------+");
             }
-        }catch (final Exception e){
+        } catch (final Exception e) {
             System.out.println("Error : " + e);
         }
     }

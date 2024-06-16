@@ -1,0 +1,9 @@
+spring:
+  elasticsearch:
+    rest:
+      # es server???
+      uris: 192.168.192.129:9200
+      # ??????
+      connection-timeout: 6s
+      # ??????
+      read-timeout: 10s
