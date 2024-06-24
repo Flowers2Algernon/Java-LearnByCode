@@ -47,7 +47,7 @@ public class PayController {
         //设置产品码
         model.setProductCode("FAST_INSTANT_TRADE_PAY");
         //设置超时时间
-        setTimeOutParam(model);
+        //setTimeOutParam(model);
         //向request对象发送具体请求参数
         request.setBizModel(model);
         
