@@ -1,1 +1,1 @@
-Hello, this repository aims to show my daily Java code
+Hello, this repository aims to show my practice Java code
