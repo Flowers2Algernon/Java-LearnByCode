@@ -41,6 +41,31 @@ public class ArrayList<T> {
      */
     public void addToFront(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        try{
+            if (data == null){
+                throw new IllegalArgumentException("Data is null");
+            }
+            //if the backing array is full, double the size
+            if(size == backingArray.length){
+                //double it
+                T[] temp = (T[]) new Object[backingArray.length * 2];
+                for(int i = 0;i<size;i++){
+                    temp[i+1] = backingArray[i];
+                }
+                temp[0] = data;
+                backingArray = temp;
+                size++;
+            }else{
+                for(int i = size;i>0;i++){
+                    backingArray[i] = backingArray[i-1];
+                }
+                backingArray[0] = data;
+                size++;
+            }
+            return backingArray;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("Data is null");
+        }
     }
 
     /**
@@ -53,6 +78,28 @@ public class ArrayList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        try{
+         if (data == null){
+                throw new IllegalArgumentException("Data is null");
+         }
+         //if the backing array is full, double the size
+            if (size == backingArray.length){
+                //double it
+                T[] temp = (T[]) new Object[backingArray.length * 2];
+                for(int i = 0;i<size;i++){
+                    temp[i] = backingArray[i];
+                }
+                temp[size] = data;
+                backingArray = temp;
+                size++;
+            }else {
+                backingArray[size] = data;
+                size++;
+            }
+            return backingArray;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("Data is null");
+        }
     }
 
     /**
