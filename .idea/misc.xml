@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Day0429/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0430/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0501/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0502/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0512/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0528/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0624-Pay/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0513_Spring/day05_13_autoAOP/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0513_Spring/day0503_beanlife_cycle/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0513_Spring/day05_13_semiauto_spring_aop/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0513_Spring/day0513_spring_loc_mapper_enhance/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0616ES_Search/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0530_SpringCloud2/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0502_shooping_cart/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_SpringTx/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_AOP_Aspect04/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_AOP_AspectJ2/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_AOP_AspectJ3/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_AOP_MarketLog/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_Spring_mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0514_Spring_AOP_TX/day05_14_applyTransaction/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0613_ElasticSearch/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0516_Spring_MVC_Mybatis/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0503_login_edition_change/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0505-05011_project1byself/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0515_Spring_MVC_Beginning/day0515_Spring_MVC/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0515_Spring_MVC_Beginning/day0515_SpingMVC_config/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0515_Spring_MVC_Beginning/day0515_SpringMVC_transfer/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0529_SpringCloud_InterService/pom.xml" />
+        <option value="$PROJECT_DIR$/Day0608-CompletableFuturePractice/pom.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

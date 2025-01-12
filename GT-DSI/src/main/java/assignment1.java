@@ -56,13 +56,12 @@ public class ArrayList<T> {
                 backingArray = temp;
                 size++;
             }else{
-                for(int i = size;i>0;i++){
+                for(int i = size;i>0;i--){
                     backingArray[i] = backingArray[i-1];
                 }
                 backingArray[0] = data;
                 size++;
             }
-            return backingArray;
         }catch (IllegalArgumentException e){
             throw new IllegalArgumentException("Data is null");
         }
@@ -96,7 +95,6 @@ public class ArrayList<T> {
                 backingArray[size] = data;
                 size++;
             }
-            return backingArray;
         }catch (IllegalArgumentException e){
             throw new IllegalArgumentException("Data is null");
         }
