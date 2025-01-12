@@ -144,6 +144,17 @@ public class ArrayList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        try{
+            if (size == 0){
+                throw new NoSuchElementException("List is empty");
+            }
+            T temp = backingArray[size-1];
+            backingArray[size-1] = null;
+            size--;
+            return temp;
+        }catch (NoSuchElementException e){
+            throw new NoSuchElementException("List is empty");
+        }
     }
 
     /**
