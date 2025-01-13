@@ -30,7 +30,13 @@ public class SinglyLinkedList<T> {
             if (data == null){
                 throw new IllegalArgumentException("Data cannot be null");
             }
-
+            SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+            newNode.setNext(head);
+            head = newNode;
+            if (size == 0) {
+                tail = head;
+            }
+            size++;
         }catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Data cannot be null");
         }
@@ -46,6 +52,7 @@ public class SinglyLinkedList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+
     }
 
     /**
