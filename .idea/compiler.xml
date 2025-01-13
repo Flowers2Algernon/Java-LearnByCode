@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="day05_13_semiauto_spring_aop" />
+        <module name="day05_14_applyTransaction" />
+        <module name="config-provider" />
+        <module name="day05_14_SpringTx" />
+        <module name="day0513_spring_loc_mapper_enhance" />
+        <module name="productInfo-api" />
+        <module name="Day0624-Pay" />
+        <module name="day0430" />
+        <module name="shop-service" />
+        <module name="user-order" />
+        <module name="user-service" />
+        <module name="Day0613_Elastic_Search" />
+        <module name="day0502_shooping_cart" />
+        <module name="day0515_SpringMVC_transfer" />
+        <module name="user-order (1)" />
+        <module name="MovieInfoService" />
+        <module name="login_first_edition" />
+        <module name="cartInfo-api" />
+        <module name="day0503" />
+        <module name="day0515_SpingMVC_config" />
+        <module name="user-api" />
+        <module name="mybatis-plus-practice" />
+        <module name="user-service (1)" />
+        <module name="day0502" />
+        <module name="MovieGateway" />
+        <module name="Day0608-CompletableFuturePractice" />
+        <module name="day05_14_AOP_Aspect04" />
+        <module name="MovieRatingService" />
+        <module name="cart-service" />
+        <module name="config-service" />
+        <module name="project1byself" />
+        <module name="Day0429" />
+        <module name="Day0528" />
+        <module name="day05_14_AOP_MarketLog" />
+        <module name="Day0501" />
+        <module name="day05_14_AOP_AspectJ2" />
+        <module name="day0516" />
+        <module name="day05_14_AOP_AspectJ3" />
+        <module name="day0512" />
+        <module name="day05_13_autoAOP" />
+        <module name="day05_14_Spring_mybatis" />
+        <module name="day0515_Spring_MVC" />
+      </profile>
+      <profile name="Annotation profile for Day0530_SpringCloud2" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.5.5.Final/mapstruct-processor-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.5.5.Final/mapstruct-1.5.5.Final.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.24/lombok-1.18.24.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
+        </processorPath>
+        <module name="mapstruct-practice" />
+        <module name="Day0616ES_Search" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Day0528" options="-parameters" />
+      <module name="Day0613_Elastic_Search" options="-parameters" />
+      <module name="Day0616ES_Search" options="-parameters" />
+      <module name="Day0624-Pay" options="-parameters" />
+    </option>
+  </component>
+</project>
