@@ -52,7 +52,20 @@ public class SinglyLinkedList<T> {
      */
     public void addToBack(T data) {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
-
+        try{
+            if(data == null){
+                throw new IllegalArgumentException("error: data cannot be null");
+            }
+            SinglyLinkedListNode<T> newNode = new SinglyLinkedListNode<>(data);
+            tail.setNext( newNode );
+            tail = newNode;
+            if (size == 0){
+                head = tail;
+            }
+            size++;
+        }catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("error: data cannot be null");
+        }
     }
 
     /**
@@ -65,6 +78,20 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromFront() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        try{
+            if(size == 0){
+                throw new NoSuchElementException("error: list is empty");
+            }
+            T data = head.getData();
+            head = head.getNext();
+            size--;
+            if(size == 0){
+                tail = null;
+            }
+            return data;
+        }catch (NoSuchElementException e){
+            throw new NoSuchElementException("error: list is empty");
+        }
     }
 
     /**
@@ -77,6 +104,25 @@ public class SinglyLinkedList<T> {
      */
     public T removeFromBack() {
         // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        try{
+            if (size == 0){
+                throw new NoSuchElementException("error: list is empty");
+            }
+            T data = tail.getData();
+            SinglyLinkedListNode<T> current = head;
+            while(current.getNext()!= tail){
+                current = current.getNext();
+            }
+            tail = current;
+            tail.setNext(null);
+            size--;
+            if(size == 0){
+                head = null;
+            }
+            return data;
+        }catch (NoSuchElementException e){
+            throw new NoSuchElementException("error: list is empty");
+        }
     }
 
     /**
